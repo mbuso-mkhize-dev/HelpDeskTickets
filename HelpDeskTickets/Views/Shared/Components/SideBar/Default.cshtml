@@ -1,0 +1,61 @@
+﻿@model HelpDeskTickets.ApplicationLogic.Entities.Users.UserEntity
+
+@if (Model != null)
+{
+	@if (Model.UserRole == HelpDeskTickets.ApplicationLogic.Entities.Users.UserRole.Admin)
+	{
+		<li>
+			<a href="/Tickets/MyTickets">
+				<i class="fa fa-bar-chart-o">
+					<span class="icon-bg rad-bg-danger"></span>
+				</i>
+				<span class="rad-sidebar-item">My Tickets</span>
+			</a>
+		</li>
+		<li>
+			<a href="/Tickets/GetLoggedTickets" class="inbox">
+				<i class="fa fa-ticket"><span class="icon-bg rad-bg-success"></span></i>
+				<span class="rad-sidebar-item">Logged Tickets</span>
+			</a>
+		</li>
+		<li>
+			<a href="/Account/UserRoles" class="inbox">
+				<i class="fa fa-ticket"><span class="icon-bg rad-bg-success"></span></i>
+				<span class="rad-sidebar-item">User Management </span>
+			</a>
+		</li>
+	}
+
+	@if (Model.UserRole == HelpDeskTickets.ApplicationLogic.Entities.Users.UserRole.Technician)
+	{
+		<li>
+			<a href="/Tickets/GetLoggedTickets" class="inbox">
+				<i class="fa fa-ticket"><span class="icon-bg rad-bg-success"></span></i>
+				<span class="rad-sidebar-item">Logged Tickets</span>
+			</a>
+		</li>
+	}
+
+	@if (Model.UserRole == HelpDeskTickets.ApplicationLogic.Entities.Users.UserRole.Customer)
+	{
+		<li>
+			<a href="/Tickets/MyOustandingTickets" class="inbox">
+				<i class="fa fa-ticket"><span class="icon-bg rad-bg-success"></span></i>
+				<span class="rad-sidebar-item">Outstanding Tickets</span>
+			</a>
+		</li>
+		<li>
+			<a href="/Tickets/MyTickets">
+				<i class="fa fa-bar-chart-o">
+					<span class="icon-bg rad-bg-danger"></span>
+				</i>
+				<span class="rad-sidebar-item">My Tickets</span>
+			</a>
+		</li>
+	}
+}
+else
+{
+	
+
+}

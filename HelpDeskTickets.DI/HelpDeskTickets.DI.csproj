@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HelpDeskTickets.ApplicationLogic\HelpDeskTickets.ApplicationLogic.csproj" />
+    <ProjectReference Include="..\HelpDeskTickets.EntityFramework.Core\HelpDeskTickets.EntityFramework.Core.csproj" />
+    <ProjectReference Include="..\HelpDeskTickets.EntityFramework\HelpDeskTickets.EntityFramework.csproj" />
+  </ItemGroup>
+
+</Project>

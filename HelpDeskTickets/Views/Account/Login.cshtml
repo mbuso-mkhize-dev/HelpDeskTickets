@@ -1,0 +1,48 @@
+﻿
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+	<link rel="stylesheet" href="~/css/login.style.css">
+</head>
+<body>
+	<!-- partial:index.partial.html -->
+	<div class="login-container">
+		@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-login" }))
+		{
+			@Html.AntiForgeryToken()
+			<ul class="login-nav">
+				<li class="login-nav__item active">
+					<a href="#">Sign In</a>
+				</li>
+				<li class="login-nav__item">
+					<a href="/Account/Register">Sign Up</a>
+				</li>
+			</ul>
+			<label for="login-input-user" class="login__label">
+				Email
+			</label>
+			<input id="login-input-user" name="Email" class="login__input" type="text" />
+			<label for="login-input-password" class="login__label">
+				Password
+			</label>
+			<input id="login-input-password" name="Password" class="login__input" type="password" />
+
+			<label for="login-sign-up" class="login__label--checkbox">
+				<input id="login-sign-up" type="checkbox" name="RememberMe" class="login__input--checkbox" />
+				Keep me Signed in
+			</label>
+			<button class="login__submit">Sign in</button>
+		}
+			<a href="#" class="login__forgot">Forgot Password?</a>
+		</div>
+	<!-- partial -->
+
+</body>
+</html>

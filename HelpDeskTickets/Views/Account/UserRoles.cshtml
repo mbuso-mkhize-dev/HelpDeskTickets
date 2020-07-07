@@ -1,0 +1,31 @@
+﻿@model HelpDeskTickets.Models.Users.UserUpdateViewModel
+@{
+	ViewData["Title"] = "UserRoles";
+}
+
+<header class="rad-page-title">
+	<span>User Management</span>
+</header>
+
+<div class="col-md-6">
+	@using (Html.BeginForm("UserRole", "Account", FormMethod.Post))
+	{
+		@Html.AntiForgeryToken()
+	
+		<div class="form-group">
+			<div class="form-group col-md-6">
+				@Html.LabelFor(c => c.UserId)
+				@Html.DropDownList("UserId", ViewBag.Users, "Select Item", new { @class = "form-control" })
+			</div>
+			<div class="form-group col-md-6">
+				@Html.LabelFor(c => c.UserRole)
+				@Html.DropDownList("UserRole", ViewBag.Roles, "Select Item", new { @class = "form-control" })
+			</div>
+			
+		</div>
+
+		
+		<button type="submit" class="btn btn-primary">Update User</button>
+	}
+</div>
+

@@ -1,0 +1,14 @@
+.vs/
+HelpDeskTickets.ApplicationLogic/bin/
+HelpDeskTickets.ApplicationLogic/obj/
+HelpDeskTickets.DI/bin/Debug/netcoreapp2.2/HelpDeskTickets.ApplicationLogic.pdb
+HelpDeskTickets.DI/bin/
+HelpDeskTickets.DI/obj/
+HelpDeskTickets.EntityFramework.Core/bin/
+HelpDeskTickets.EntityFramework/bin/
+HelpDeskTickets.EntityFramework/obj/
+HelpDeskTickets.Tests/bin/
+HelpDeskTickets.Tests/obj/
+HelpDeskTickets/bin/
+HelpDeskTickets/obj/
+HelpDeskTickets.EntityFramework.Core/obj/

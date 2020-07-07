@@ -1,0 +1,89 @@
+﻿@model HelpDeskTickets.Models.Tickets.MyTicketViewModel
+@{
+	ViewData["Title"] = "MyOustandingTickets";
+}
+
+
+<header class="rad-page-title">
+	<span>My OustandingTickets</span>
+</header>
+
+<div class="col-md-6">
+	<br />
+
+	<input type="button" value="Log a Ticket" class="btn btn-primary" onclick="window.location.href='/Tickets/CreateTicket'" />
+	<br />
+	<br />
+
+	<div id="list-grid"></div>
+</div>
+
+<div class="col-md-6">
+</div>
+
+@section scripts {
+	<script>
+
+	var gridDataSource = new kendo.data.DataSource({
+		data: @Html.Raw(Model.Tickets),
+		schema: {
+			model: {
+				id: 'id',
+				fields: {
+					id: { type: 'string', editable: false },
+					title: { type: 'string', editable: false },
+					status: { type: 'string' },
+					createdat: { type: 'string', editable: false },
+					issueType: { type: 'string', editable: false },
+					issueSeverity: { type: 'string', editable: false }
+				}
+			}
+		}
+	});
+
+
+
+	$("#list-grid").kendoGrid({
+		dataSource: gridDataSource,
+		editable: {
+			confirmation: false,
+			mode: "inline"
+		},
+		scrollable: false,
+		columns: [{
+			field: "title",
+			title: "Title",
+			width: 200,
+			template: '<a class="active" href="/Tickets/GetTicket/#=Id#">#=Title#</a>'
+		}, {
+			field: "Status",
+			title: "Status",
+			width: 100
+		}, {
+				field: "Createdat",
+			title: "Date logged",
+			width: 100
+		}, {
+				field: "IssueType",
+			title: "Issue Type",
+			width: 100
+			}, {
+				field: "IssueSeverity",
+				title: "Severity",
+				width: 100
+			}, {
+			command: ['destroy'], title: '&nbsp;', width: '172px'
+			}],
+		remove: function (e) {
+			$.ajax({
+				method: "DELETE",
+				url: "DeleteTicket/" + e.model.Id
+			}).done(function (data) {
+			});
+		}
+		
+	});
+
+	</script>
+}
+

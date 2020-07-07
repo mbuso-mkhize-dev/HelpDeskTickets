@@ -1,0 +1,51 @@
+﻿@model HelpDeskTickets.Models.Tickets.TicketViewModel
+@{
+	ViewData["Title"] = "UpdateTicket";
+}
+
+<header class="rad-page-title">
+	<span>Update Ticket</span>
+</header>
+
+<div class="col-md-6">
+	@using (Html.BeginForm("UpdateTicket", "Ticket", FormMethod.Post))
+	{
+		@Html.AntiForgeryToken()
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				@Html.LabelFor(c => c.Title)
+				@Html.TextBoxFor(c => c.Title, new { @class = "form-control", @placeholder = "Title", @id = "title" })
+			</div>
+			<div class="form-group col-md-6">
+				@Html.LabelFor(c => c.Description)
+				@Html.TextBoxFor(c => c.Description, new { @class = "form-control", @placeholder = "Description" })
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="form-group col-md-4">
+				@Html.LabelFor(c => c.IssueType)
+				@Html.DropDownList("IssueType", ViewBag.Types, "Select Item", new { @class = "form-control" })
+			</div>
+			<div class="form-group col-md-4">
+				@Html.LabelFor(c => c.IssueSeverity)
+				@Html.DropDownList("IssueSeverity", ViewBag.Severe, "Select Item", new { @class = "form-control" })
+			</div>
+			<div class="form-group col-md-4">
+				@Html.LabelFor(c => c.ResolutionStatus)
+				@Html.DropDownList("ResolutionStatus", ViewBag.Reso, "Select Item", new { @class = "form-control" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="form-group col-md-6">
+				@Html.LabelFor(c => c.ResolutionSteps)
+				@Html.TextBoxFor(c => c.ResolutionSteps, new { @class = "form-control" })
+			</div>
+			<div class="form-group col-md-6">
+				@Html.LabelFor(c => c.Comments)
+				@Html.TextBoxFor(c => c.Comments, new { @class = "form-control" })
+			</div>
+		</div>
+		<button id="ticketcr" type="submit" class="btn btn-primary">Update Ticket</button>
+	}
+</div>

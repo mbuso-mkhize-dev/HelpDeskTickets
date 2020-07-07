@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+	<title>@ViewData["Title"] - HelpDeskTickets</title>
+
+	<environment include="Development">
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+			  crossorigin="anonymous"
+			  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+	</environment>
+	<link rel="stylesheet" href="~/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/bootstrap-responsive.min.css" />
+	<link rel="stylesheet" href="~/css/reset.min.css">
+	<link rel='stylesheet' href='~/css/morris.css'>
+	<link rel="stylesheet" href="~/css/kendo.common.min.css" />
+	<link rel="stylesheet" href="~/css/kendo.uniform.min.css" />
+	<link rel="stylesheet" href="~/css/style.css" />
+	<link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<section>
+		<header>
+			<nav class="rad-navigation">
+				<div class="rad-logo-container rad-nav-min">
+					<a href="#" class="rad-logo"><i class=" fa fa-recycle"></i> HelpDesk Tickets</a>
+					<a href="#" class="rad-toggle-btn pull-right"><i class="fa fa-bars"></i></a>
+				</div>
+				<a href="#" class="rad-logo-hidden">HelpDesk Tickets</a>
+				<div class="rad-top-nav-container">
+					<a href="" class="brand-icon"><i class="fa fa-recycle"></i></a>
+					<ul class="pull-right links">
+						<li class="rad-dropdown no-color">
+							<a class="rad-menu-item" href="#"><img class="rad-list-img sm-img" src="~/img/user.png" /></a>
+							<ul class="rad-dropmenu-item sm-menu">
+								<li class="rad-notification-item">
+									<a class="rad-notification-content lg-text" href="#"><i class="fa fa-edit"></i> My Profile</a>
+								</li>
+								<li class="rad-notification-item">
+									<a class="rad-notification-content lg-text" href="/Account/Logout"><i class="fa fa-power-off"></i> Sign out</a>
+								</li>
+							</ul>
+						</li>
+
+					</ul>
+
+				</div>
+			</nav>
+		</header>
+	</section>
+	<aside>
+		<nav class="rad-sidebar rad-nav-min">
+			<ul>
+				@await Component.InvokeAsync("SideBar")
+
+			</ul>
+		</nav>
+	</aside>
+	<main>
+		<section>
+			<div class="rad-body-wrapper rad-nav-min">
+				<div class="container-fluid">
+
+
+					@RenderBody()
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer class="footer text-center">2019 &copy; HelpDesk Tickets. </footer>
+
+
+	<environment include="Development">
+		<script src="~/lib/jquery/dist/jquery.js"></script>
+		<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	</environment>
+	<environment exclude="Development">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+				asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+				asp-fallback-test="window.jQuery"
+				crossorigin="anonymous"
+				integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+		</script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+				asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+				asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+				crossorigin="anonymous"
+				integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+		</script>
+	</environment>
+	<script src='~/js/jquery.min.js'></script>
+	<script src='~/js/raphael-min.js'></script>
+	<script src='~/js/morris.min.js'></script>
+	<script src='~/js/jquery-ui.js'></script>
+	<script src='~/js/jquery.slimscroll.min.js'></script>
+	<script src='~/js/lodash.min.js'></script>
+	<script src="~/js/script.js"></script>
+	<script src="~/js/kendo.ui.core.min.js"></script>
+	<script src="~/js/kendo.grid.js"></script>
+
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

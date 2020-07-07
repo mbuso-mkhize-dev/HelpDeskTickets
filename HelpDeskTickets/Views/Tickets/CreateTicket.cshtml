@@ -1,0 +1,94 @@
+﻿@model HelpDeskTickets.Models.Tickets.TicketViewModel
+@{
+	ViewData["Title"] = "CreateTicket";
+}
+
+<header class="rad-page-title">
+	<span>Dashboard</span>
+	<h1 class="md-txt">Welcome to HelpDesk Tickets</h1>
+</header>
+
+<div class="col-md-6">
+	@using (Html.BeginForm("CreateTicket", "Ticket", FormMethod.Post))
+	{
+	@Html.AntiForgeryToken()
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			@Html.LabelFor(c => c.Title)
+			@Html.TextBoxFor(c => c.Title, new { @class = "form-control", @placeholder = "Title" ,@id = "title" })
+		</div>
+		<div class="form-group col-md-6">
+			@Html.LabelFor(c => c.Description)
+			@Html.TextBoxFor(c => c.Description, new { @class = "form-control", @placeholder = "Description" })
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="form-group col-md-4">
+			@Html.LabelFor(c => c.IssueType)
+			@Html.DropDownList("IssueType", ViewBag.Types, "Select Item", new { @class = "form-control" })
+		</div>
+		<div class="form-group col-md-4">
+			@Html.LabelFor(c => c.IssueSeverity)
+			@Html.DropDownList("IssueSeverity", ViewBag.Severe, "Select Item", new { @class = "form-control" })
+		</div>
+		<div class="form-group col-md-4">
+			@*@Html.LabelFor(c => c.ResolutionStatus)
+			@Html.DropDownList("ResolutionStatus", ViewBag.Reso, "Select Item", new { @class = "form-control" })*@
+		</div>
+		<button id="ticketcr" type="submit" class="btn btn-primary">Log Ticket</button>
+	</div>
+	
+	}
+</div>
+
+<div class="col-md-6">
+	<br />
+	<h2> Suggestions</h2>
+	<br />
+
+	<div id="list-grid"></div>
+	<table class="table" id="table">
+		<thead>
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Status</th>
+				<th scope="col">Date logged</th>
+				<th scope="col">Issue Type</th>
+				<th scope="col">IssueS everity</th>
+			</tr>
+		</thead>
+		<tbody>
+						
+		</tbody>
+	</table>
+</div>
+
+@section scripts {
+	<script>
+		$("#ticketcr").click(function () {
+			$("form").submit();
+		})
+		$("#title").keydown(function () {
+			if ($("#title").val().length > 3) {
+				$.ajax({
+					method: "GET",
+					url: "SearchTickets?searchText=" + $(this).val()
+				}).done(function (data) {
+					var suggestions = JSON.parse(data);
+					$('#table tbody').html('');
+					suggestions.forEach(function (d) {
+						
+						$('#table tbody').append('<tr><td> <a class="active" href="/Tickets/GetTicket/' + d.Id + '">' + d.Title + '</a></td> ' +
+							'<td>' + d.Status + '</td>' +
+							'<td>' + d.Createdat + '</td>' +
+							'<td>' + d.IssueType + '</td>' +
+							'<<td>' + d.IssueSeverity + '</td></tr>');
+					});
+					$('#table tbody').append('<tr><td>.....</td></tr>');
+				});
+			}
+		});
+
+	</script>
+}
+
